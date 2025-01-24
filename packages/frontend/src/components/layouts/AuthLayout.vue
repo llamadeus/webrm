@@ -51,7 +51,7 @@ async function logout() {
 
 <template>
   <SidebarProvider>
-    <Sidebar class="bg-background">
+    <Sidebar class="bg-background z-20">
       <SidebarHeader>
         <RouterLink active-class="" class="flex items-center gap-3" exact-active-class="" to="/">
           <div class="flex size-11 rounded-lg bg-blue-950 text-white items-center justify-center">
