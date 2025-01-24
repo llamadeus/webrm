@@ -1,4 +1,5 @@
 import type { MappedAPI } from "webrm-shared";
+import { HttpError } from "~/api/error";
 import type { RouteParameters } from "~/types/express-serve-static-core";
 
 
@@ -62,10 +63,10 @@ export async function api<Key extends keyof MappedAPI>(
 
   if (! response.ok) {
     const message = typeof data == "object" && data !== null
-      ? data.message
-      : "Something went wrong";
+      ? data.error
+      : undefined;
 
-    throw new Error(message);
+    throw new HttpError(response.status, message ?? "Something went wrong");
   }
 
   return data;

@@ -38,13 +38,13 @@ export function endpoint<
       if (typeof options.auth != "undefined") {
         if (options.auth === null) {
           if (typeof req.session.auth != "undefined") {
-            return json(res, 401, { message: "Authorized" });
+            return json(res, 401, { error: "Authorized" });
           }
         }
         else {
           const result = authorized(req, options.auth);
           if (! result) {
-            return json(res, 401, { message: "Unauthorized" });
+            return json(res, 401, { error: "Unauthorized" });
           }
         }
       }
@@ -77,10 +77,10 @@ export function endpoint<
         console.error(error);
 
         if (error instanceof HttpError) {
-          return json(res, error.status, { message: error.message });
+          return json(res, error.status, { error: error.message });
         }
 
-        return json(res, 500, { message: "Internal server error" });
+        return json(res, 500, { error: "Internal server error" });
       }
     },
   };
