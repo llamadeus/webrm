@@ -31,8 +31,8 @@ services:
     environment:
       APP_MONGODB_URL: mongodb://mongo:mongo@mongo:27017/webrm
       APP_REDIS_URL: redis://redis:6379
-      APP_SESSION_SECRET: ${APP_SESSION_SECRET}
-      APP_ALLOW_ORIGIN: ${APP_URL}:4000,${APP_URL}:5173
+      APP_SESSION_SECRET: ${WEBRM_SESSION_SECRET}
+      APP_ALLOW_ORIGIN: http://localhost:5173,${WEBRM_FRONTEND_URL}
 
   frontend:
     depends_on:
@@ -42,8 +42,8 @@ services:
     ports:
       - "4000:4000"
     environment:
-      VITE_APP_URL: ${APP_URL}:4000
-      VITE_BACKEND_URL: ${APP_URL}:3000
+      VITE_FRONTEND_URL: ${WEBRM_FRONTEND_URL}
+      VITE_BACKEND_URL: ${WEBRM_BACKEND_URL}
 
 volumes:
   mongo-data:

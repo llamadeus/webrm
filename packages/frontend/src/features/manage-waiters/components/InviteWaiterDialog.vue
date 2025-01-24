@@ -25,7 +25,7 @@ import { Label } from "~/components/ui/label";
 import { getErrorMessage } from "~/utils/error";
 
 
-const appUrl = import.meta.env.VITE_APP_URL;
+const appUrl = import.meta.env.VITE_FRONTEND_URL;
 const invitationToken = ref<string | null>(null);
 const formSchema = z.object({
   name: z
