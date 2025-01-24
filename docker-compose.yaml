@@ -7,20 +7,20 @@ services:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mongo
 
-  redis:
-    image: redis:latest
+  valkey:
+    image: valkey/valkey:latest
 
   backend:
     depends_on:
       - mongo
-      - redis
+      - valkey
     build:
       dockerfile: Dockerfile.backend
     ports:
       - "3000:3000"
     environment:
       APP_MONGODB_URL: mongodb://mongo:mongo@mongo:27017/webrm
-      APP_REDIS_URL: redis://redis:6379
+      APP_REDIS_URL: redis://valkey:6379
       APP_SESSION_SECRET: ${WEBRM_SESSION_SECRET}
       APP_ALLOW_ORIGIN: http://localhost:5173,${WEBRM_FRONTEND_URL}
 
