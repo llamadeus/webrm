@@ -29,11 +29,11 @@ services:
       - backend
     build:
       dockerfile: Dockerfile.frontend
+      args:
+        WEBRM_BACKEND_URL: ${WEBRM_BACKEND_URL}
+        WEBRM_FRONTEND_URL: ${WEBRM_FRONTEND_URL}
     ports:
       - "4000:4000"
-    environment:
-      VITE_FRONTEND_URL: ${WEBRM_FRONTEND_URL}
-      VITE_BACKEND_URL: ${WEBRM_BACKEND_URL}
 
 volumes:
   mongo-data:

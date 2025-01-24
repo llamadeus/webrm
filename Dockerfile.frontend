@@ -1,6 +1,14 @@
 # Stage 1: Build
 FROM oven/bun:1.2.0-alpine AS builder
 
+# Define build arguments
+ARG WEBRM_BACKEND_URL
+ARG WEBRM_FRONTEND_URL
+
+# Set environment variables
+ENV VITE_FRONTEND_URL=$WEBRM_FRONTEND_URL
+ENV VITE_BACKEND_URL=$WEBRM_BACKEND_URL
+
 # Set the working directory
 WORKDIR /app
 
