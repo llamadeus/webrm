@@ -5,8 +5,8 @@ import { type AlertVariants, alertVariants } from "./index";
 
 
 const props = defineProps<{
-  class?: HTMLAttributes["class"]
-  variant?: AlertVariants["variant"]
+  class?: HTMLAttributes["class"],
+  variant?: AlertVariants["variant"],
 }>();
 </script>
 

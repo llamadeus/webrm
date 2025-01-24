@@ -5,8 +5,8 @@ import { cn } from "~/lib/utils";
 
 
 const props = defineProps<{
-  showIcon?: boolean
-  class?: HTMLAttributes["class"]
+  showIcon?: boolean,
+  class?: HTMLAttributes["class"],
 }>();
 
 const width = computed(() => {

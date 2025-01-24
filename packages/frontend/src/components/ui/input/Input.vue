@@ -5,9 +5,9 @@ import { cn } from "~/lib/utils";
 
 
 const props = defineProps<{
-  defaultValue?: string | number
-  modelValue?: string | number
-  class?: HTMLAttributes["class"]
+  defaultValue?: string | number,
+  modelValue?: string | number,
+  class?: HTMLAttributes["class"],
 }>();
 
 const emits = defineEmits<{
@@ -17,7 +17,7 @@ const emits = defineEmits<{
 const modelValue = useVModel(props, "modelValue", emits, {
   passive: true,
   defaultValue: props.defaultValue,
-});
+} as never);
 </script>
 
 <template>

@@ -21,8 +21,8 @@ const props = withDefaults(defineProps<SidebarMenuButtonProps>(), {
 
 <template>
   <Primitive
-    :as="as"
-    :as-child="asChild"
+    :as="props.as"
+    :as-child="props.asChild"
     :class="cn(sidebarMenuButtonVariants({ variant, size }), props.class)"
     :data-active="isActive"
     :data-size="size"

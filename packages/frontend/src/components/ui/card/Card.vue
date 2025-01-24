@@ -4,19 +4,12 @@ import { cn } from "~/lib/utils";
 
 
 const props = defineProps<{
-  class?: HTMLAttributes["class"]
+  class?: HTMLAttributes["class"],
 }>();
 </script>
 
 <template>
-  <div
-    :class="
-      cn(
-        'rounded-xl border bg-card text-card-foreground shadow-lg',
-        props.class,
-      )
-    "
-  >
+  <div :class="cn('rounded-xl border bg-card text-card-foreground shadow-lg', props.class)">
     <slot/>
   </div>
 </template>

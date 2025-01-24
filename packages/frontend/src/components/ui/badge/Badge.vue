@@ -5,8 +5,8 @@ import { type BadgeVariants, badgeVariants } from "./index";
 
 
 const props = defineProps<{
-  variant?: BadgeVariants["variant"]
-  class?: HTMLAttributes["class"]
+  variant?: BadgeVariants["variant"],
+  class?: HTMLAttributes["class"],
 }>();
 </script>
 

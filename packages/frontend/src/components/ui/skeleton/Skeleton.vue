@@ -3,11 +3,9 @@ import type { HTMLAttributes } from "vue";
 import { cn } from "~/lib/utils";
 
 
-interface SkeletonProps {
-  class?: HTMLAttributes["class"];
-}
-
-const props = defineProps<SkeletonProps>();
+const props = defineProps<{
+  class?: HTMLAttributes["class"],
+}>();
 </script>
 
 <template>

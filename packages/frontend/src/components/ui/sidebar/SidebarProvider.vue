@@ -13,9 +13,9 @@ import {
 
 
 const props = withDefaults(defineProps<{
-  defaultOpen?: boolean
-  open?: boolean
-  class?: HTMLAttributes["class"]
+  defaultOpen?: boolean,
+  open?: boolean,
+  class?: HTMLAttributes["class"],
 }>(), {
   defaultOpen: true,
   open: undefined,
@@ -30,7 +30,7 @@ const openMobile = ref(false);
 
 const open = useVModel(props, "open", emits, {
   defaultValue: props.defaultOpen ?? false,
-  passive: (props.open === undefined) as false,
+  passive: (typeof props.open == "undefined") as false,
 }) as Ref<boolean>;
 
 function setOpen(value: boolean) {
@@ -75,9 +75,9 @@ provideSidebarContext({
   <div
     :class="cn('group/sidebar-wrapper flex min-h-svh w-full text-sidebar-foreground has-[[data-variant=inset]]:bg-sidebar', props.class)"
     :style="{
-        '--sidebar-width': SIDEBAR_WIDTH,
-        '--sidebar-width-icon': SIDEBAR_WIDTH_ICON,
-      }"
+      '--sidebar-width': SIDEBAR_WIDTH,
+      '--sidebar-width-icon': SIDEBAR_WIDTH_ICON,
+    }"
     v-bind="$attrs"
   >
     <slot/>
