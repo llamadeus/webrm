@@ -123,7 +123,7 @@ const onSubmit = form.handleSubmit(async (values) => {
               </Label>
             </div>
             <DialogClose as-child>
-              <Button variant="default" :disabled="!hasCopied">
+              <Button :disabled="!hasCopied" variant="default">
                 Done
               </Button>
             </DialogClose>
