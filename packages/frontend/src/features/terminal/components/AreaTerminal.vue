@@ -5,7 +5,7 @@ import { toast } from "vue-sonner";
 import { TerminalType } from "webrm-shared";
 import { api } from "~/api";
 import { Container, Section } from "~/components/base";
-import { OrdersFilter, OrdersTable, OrderStatus } from "~/components/orders";
+import { OrdersFilter, OrdersTable } from "~/components/orders";
 import { Empty } from "~/components/util";
 import { useAuthStore } from "~/stores/auth";
 import { useGlobal } from "~/stores/global";

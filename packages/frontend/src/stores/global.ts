@@ -1,4 +1,4 @@
-import { reactive, type Ref, ref } from "vue";
+import { type Ref, ref } from "vue";
 
 // Store all tab states with keys
 const tabStates: Record<string | symbol, Ref<unknown>> = {};
