@@ -109,7 +109,7 @@ async function handleUnlink(ref: string) {
               <h2 class="py-2 text-3xl font-normal border-b">Restaurant</h2>
             </div>
 
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <TerminalCard
                 v-for="terminal in groups.area"
                 :key="terminal.id"
@@ -126,7 +126,7 @@ async function handleUnlink(ref: string) {
               <h2 class="py-2 text-3xl font-normal border-b">Tables</h2>
             </div>
 
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <TerminalCard
                 v-for="terminal in groups.table"
                 :key="terminal.id"
