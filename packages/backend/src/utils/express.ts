@@ -6,7 +6,7 @@ export function json(res: Response, status: number, data: Json) {
   res.status(status).json(data);
 }
 
-export async function destroySession(req: Request, res: Response) {
+export async function destroySession(req: Request, res: Response, mode: "clean" | "restore" = "clean") {
   return new Promise<void>((resolve, reject) => {
     const { session } = req;
 
@@ -15,8 +15,10 @@ export async function destroySession(req: Request, res: Response) {
         return reject(err);
       }
 
-      req.session = session;
-      req.session.auth = undefined;
+      if (mode === "restore") {
+        req.session = session;
+        req.session.auth = undefined;
+      }
       res.clearCookie("connect.sid");
 
       resolve();
