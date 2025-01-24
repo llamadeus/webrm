@@ -63,7 +63,6 @@ const onSubmit = form.handleSubmit(async (values) => {
       </Button>
     </DialogTrigger>
     <DialogContent @interactOutside.prevent>
-
       <form @submit.prevent="onSubmit">
         <DialogHeader>
           <DialogTitle>Invite a waiter</DialogTitle>
