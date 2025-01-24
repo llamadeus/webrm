@@ -77,7 +77,7 @@ router.beforeEach(async (to) => {
 });
 
 watchEffect(() => {
-  if (authStore.auth === null) {
+  if (typeof authStore.auth == "undefined" || authStore.auth === null) {
     return;
   }
 
