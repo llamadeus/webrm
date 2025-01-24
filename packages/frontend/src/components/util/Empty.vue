@@ -51,7 +51,7 @@ const showAction = computed(() => (
           class="text-primary hover:underline focus:underline"
           exact-active-class=""
         >
-          Click here
+          <span>Click here</span>
         </RouterLink>
         to {{ props.actionCaption }}
       </p>
