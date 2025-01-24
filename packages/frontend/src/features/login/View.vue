@@ -86,7 +86,7 @@ const handleSubmit = form.handleSubmit(async (values) => {
             </RouterLink>
           </Button>
 
-          <Button variant="default">
+          <Button type="submit" variant="default">
             Login
           </Button>
         </CardFooter>

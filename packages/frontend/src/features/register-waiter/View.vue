@@ -153,7 +153,7 @@ onMounted(async () => {
         </CardContent>
 
         <CardFooter class="justify-end">
-          <Button variant="default">
+          <Button type="submit" variant="default">
             Register
           </Button>
         </CardFooter>
