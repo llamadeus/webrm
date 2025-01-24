@@ -1,0 +1,10 @@
+{
+  "name": "webrm",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.5"
+  }
+}

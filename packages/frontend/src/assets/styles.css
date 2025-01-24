@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 0 0% 83.1%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply min-h-screen bg-gray-100;
+  }
+
+  body {
+    @apply flex flex-col min-h-screen text-foreground;
+  }
+
+  .chevron-border {
+    height: 100%;
+    aspect-ratio: var(--chevron-aspect);
+    clip-path: polygon(0 0, calc(var(--chevron-strength)) 0, 100% 50%, calc(var(--chevron-strength)) 100%, 0 100%, calc(100% - var(--chevron-strength)) 50%);
+    z-index: 1;
+  }
+
+  .chevron-attachments {
+    position: relative;
+  }
+
+  .chevron-attachments:has(+ .chevron-border) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .chevron-attachments:has(+ .chevron-border)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    aspect-ratio: var(--chevron-aspect);
+    transform: translateX(100%);
+    background-color: inherit;
+    clip-path: polygon(0 0, 1px 0, calc(100% - var(--chevron-strength) + 1px) 50%, 1px 100%, 0 100%);
+  }
+
+  .chevron-border + .chevron-attachments {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .chevron-border + .chevron-attachments::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    aspect-ratio: var(--chevron-aspect);
+    transform: translateX(-100%);
+    background-color: inherit;
+    clip-path: polygon(calc(var(--chevron-strength) - 1px) 0, 100% 0, 100% 100%, calc(var(--chevron-strength) - 1px) 100%, calc(100% - 1px) 50%);
+  }
+
+  #vue-inspector-container,
+  #__vue-devtools-container__ {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .grid-stack {
+    grid-template-areas: "stack";
+  }
+
+  .grid-stack > * {
+    grid-area: stack;
+  }
+}
