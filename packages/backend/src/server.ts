@@ -83,7 +83,6 @@ async function validateUserMiddleware(req: Request, res: Response, next: NextFun
     return next();
   }
 
-
   try {
     switch (req.session.auth.type) {
     case AuthType.Admin:
