@@ -8,6 +8,7 @@ import * as z from "zod";
 import { api } from "~/api";
 import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
 import { Button } from "~/components/ui/button";
+import { Checkbox } from "~/components/ui/checkbox";
 import {
   Dialog,
   DialogBody,
@@ -27,6 +28,7 @@ import { getErrorMessage } from "~/utils/error";
 
 const appUrl = import.meta.env.VITE_FRONTEND_URL;
 const invitationToken = ref<string | null>(null);
+const hasCopied = ref(false);
 const formSchema = z.object({
   name: z
     .string({ required_error: "This field is required." })
@@ -114,8 +116,14 @@ const onSubmit = form.handleSubmit(async (values) => {
             </Button>
           </template>
           <template v-else>
+            <div class="flex gap-2 items-center px-2">
+              <Checkbox id="yes-i-did-copy-the-invitation-link" v-model:checked="hasCopied"/>
+              <Label for="yes-i-did-copy-the-invitation-link">
+                I copied the invitation link
+              </Label>
+            </div>
             <DialogClose as-child>
-              <Button variant="default">
+              <Button variant="default" :disabled="!hasCopied">
                 Done
               </Button>
             </DialogClose>
