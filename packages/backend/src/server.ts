@@ -124,16 +124,16 @@ async function validateUserMiddleware(req: Request, res: Response, next: NextFun
 const authMiddleware = chainMiddlewares(sessionMiddleware, validateUserMiddleware);
 
 
-// Initialize link
-link.initialize({
-  redis,
-});
-
 // Initialize Socket.io
 socket.initialize(server, {
   redis,
   cors: corsOptions,
   middleware: authMiddleware,
+});
+
+// Initialize link
+link.initialize({
+  redis,
 });
 
 // Middleware
