@@ -10,7 +10,7 @@ interface State {
 
 export const useAuthStore = defineStore("auth", {
   state: (): State => ({
-    auth: null,
+    auth: undefined,
   }),
   actions: {
     setAuth(auth: Auth | null) {
