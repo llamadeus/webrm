@@ -203,7 +203,7 @@ async function handleDelete(id: string) {
                   <DropdownMenuItem
                     v-if="terminals.has(terminalRef(table.id))"
                     as="button"
-                    @click="dialogTableId = table.id; openUnlink = true"
+                    @click="dialogTableId = terminalRef(table.id); openUnlink = true"
                   >
                     Unlink terminal
                   </DropdownMenuItem>
