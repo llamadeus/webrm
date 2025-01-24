@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { type BackendApi, OrderStatus } from "webrm-shared";
+import { type MappedAPI, OrderStatus } from "webrm-shared";
 
 
-export type Order = BackendApi["GET /orders"]["output"][number];
+export type Order = MappedAPI["GET /orders"]["output"][number];
 
 interface State {
   orders: Order[];

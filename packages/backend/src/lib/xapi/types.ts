@@ -18,7 +18,7 @@ export interface Endpoint<
   handler: RequestHandler<RouteParameters<TRoute>>;
 }
 
-export interface Api<T extends Record<string, Endpoint<HttpMethod, any, ZodTypeAny, ZodTypeAny>>> {
+export interface API<T extends Record<string, Endpoint<HttpMethod, any, ZodTypeAny, ZodTypeAny>>> {
   endpoints: T;
   toRouter(): Router;
 }

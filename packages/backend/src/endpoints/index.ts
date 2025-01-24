@@ -73,4 +73,4 @@ export const api = xapi.api({
   waiters,
 });
 
-export type Api = typeof api["endpoints"];
+export type API = typeof api["endpoints"];

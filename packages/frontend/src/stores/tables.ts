@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import type { BackendApi } from "webrm-shared";
+import type { MappedAPI } from "webrm-shared";
 
 
-export type Table = BackendApi["GET /tables"]["output"]["tables"][number];
+export type Table = MappedAPI["GET /tables"]["output"]["tables"][number];
 
 interface State {
   tables: Table[];

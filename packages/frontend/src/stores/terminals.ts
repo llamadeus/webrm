@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import type { BackendApi } from "webrm-shared";
+import type { MappedAPI } from "webrm-shared";
 
 
-export type Terminal = BackendApi["GET /terminals"]["output"][number];
+export type Terminal = MappedAPI["GET /terminals"]["output"][number];
 
 interface State {
   terminals: Terminal[];

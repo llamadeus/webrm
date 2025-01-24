@@ -1,10 +1,10 @@
 import { Router } from "express";
 import type { HttpMethod } from "webrm-shared";
 import type { ZodTypeAny } from "zod";
-import type { Api, Endpoint } from "~/lib/xapi/types";
+import type { API, Endpoint } from "~/lib/xapi/types";
 
 
-export function api<T extends Record<string, Endpoint<HttpMethod, any, ZodTypeAny, ZodTypeAny>>>(endpoints: T): Api<T> {
+export function api<T extends Record<string, Endpoint<HttpMethod, any, ZodTypeAny, ZodTypeAny>>>(endpoints: T): API<T> {
   return {
     endpoints,
     toRouter() {

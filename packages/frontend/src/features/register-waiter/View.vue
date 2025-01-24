@@ -4,7 +4,7 @@ import { useForm } from "vee-validate";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { toast } from "vue-sonner";
-import type { BackendApi } from "webrm-shared";
+import type { MappedAPI } from "webrm-shared";
 import * as z from "zod";
 import { api } from "~/api";
 import { Button } from "~/components/ui/button";
@@ -15,7 +15,7 @@ import { Label } from "~/components/ui/label";
 import { getErrorMessage } from "~/utils/error";
 
 
-type Invitation = BackendApi["GET /invitation/:token"]["output"];
+type Invitation = MappedAPI["GET /invitation/:token"]["output"];
 
 // Stores
 const route = useRoute();

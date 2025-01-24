@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import type { BackendApi } from "webrm-shared";
+import type { MappedAPI } from "webrm-shared";
 
 
-export type Waiter = BackendApi["GET /waiters"]["output"][number];
+export type Waiter = MappedAPI["GET /waiters"]["output"][number];
 
 interface State {
   waiters: Waiter[];

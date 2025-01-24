@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import type { BackendApi } from "webrm-shared";
+import type { MappedAPI } from "webrm-shared";
 
 
-export type MenuItem = BackendApi["GET /menu-items"]["output"][number];
+export type MenuItem = MappedAPI["GET /menu-items"]["output"][number];
 
 interface State {
   menuItems: MenuItem[];

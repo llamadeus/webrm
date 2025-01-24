@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import type { BackendApi } from "webrm-shared";
+import type { MappedAPI } from "webrm-shared";
 
 
-export type Auth = BackendApi["GET /auth"]["output"];
+export type Auth = MappedAPI["GET /auth"]["output"];
 
 interface State {
   auth: Auth | null | undefined;

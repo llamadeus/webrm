@@ -1,36 +1,36 @@
-import type { BackendApi } from "webrm-shared";
+import type { MappedAPI } from "webrm-shared";
 import type { RouteParameters } from "~/types/express-serve-static-core";
 
 
 type IsStrictlyAny<T> = (T extends never ? true : false) extends false ? false : true;
 
-type InputOptions<Key extends keyof BackendApi> = Key extends `GET ${infer _}`
+type InputOptions<Key extends keyof MappedAPI> = Key extends `GET ${infer _}`
   ? {}
-  : IsStrictlyAny<BackendApi[Key]["input"]> extends true
+  : IsStrictlyAny<MappedAPI[Key]["input"]> extends true
     ? {}
     : {
-      input: BackendApi[Key]["input"];
+      input: MappedAPI[Key]["input"];
     };
 
-type ParamsOptions<Key extends keyof BackendApi> = {} extends RouteParameters<BackendApi[Key]["route"]>
+type ParamsOptions<Key extends keyof MappedAPI> = {} extends RouteParameters<MappedAPI[Key]["route"]>
   ? {}
   : {
-    params: RouteParameters<BackendApi[Key]["route"]>,
+    params: RouteParameters<MappedAPI[Key]["route"]>,
   };
 
-type Options<Key extends keyof BackendApi> =
+type Options<Key extends keyof MappedAPI> =
   & InputOptions<Key>
   & ParamsOptions<Key>;
 
-export async function api<Key extends keyof BackendApi & `GET ${string}`>(route: Key): Promise<BackendApi[Key]["output"]>;
-export async function api<Key extends keyof BackendApi>(
+export async function api<Key extends keyof MappedAPI & `GET ${string}`>(route: Key): Promise<MappedAPI[Key]["output"]>;
+export async function api<Key extends keyof MappedAPI>(
   route: Key,
   options: Options<Key>,
-): Promise<BackendApi[Key]["output"]>;
-export async function api<Key extends keyof BackendApi>(
+): Promise<MappedAPI[Key]["output"]>;
+export async function api<Key extends keyof MappedAPI>(
   route: Key,
   options?: Options<Key>,
-): Promise<BackendApi[Key]["output"]> {
+): Promise<MappedAPI[Key]["output"]> {
   const [method, rawPath] = route.split(" ");
   const path = rawPath.replace(/(:(\w+))/g, (_1, _2, key) => {
     if (typeof options == "undefined") {

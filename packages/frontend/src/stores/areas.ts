@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { AreaType, type BackendApi } from "webrm-shared";
+import { AreaType, type MappedAPI } from "webrm-shared";
 
 
-export type Areas = BackendApi["GET /areas"]["output"]["areas"];
+export type Areas = MappedAPI["GET /areas"]["output"]["areas"];
 
 interface State {
   areas: Areas;
