@@ -1,13 +1,16 @@
 <script lang="ts" setup>
+import { ThumbsUp } from "lucide-vue-next";
 import { TooltipProvider } from "radix-vue";
 import { defineComponent, shallowRef, watchEffect } from "vue";
 import { RouterView } from "vue-router";
 import { type Auth, AuthType } from "webrm-shared";
 import { api } from "~/api";
 import { Toaster } from "~/components/ui/sonner";
+import { Empty } from "~/components/util";
 import { router } from "~/router";
 import { useAuthStore } from "~/stores/auth";
 import { sync } from "~/sync";
+import { getErrorMessage } from "~/utils/error";
 
 
 const NoLayout = defineComponent({
@@ -18,9 +21,12 @@ const NoLayout = defineComponent({
   },
 } as never);
 
-
+// Stores
 const authStore = useAuthStore();
+
+// State
 const layout = shallowRef<unknown>(NoLayout);
+const authError = shallowRef<Error | null>(null);
 
 function checkAuth(auth: Auth | null, roles: AuthType[] | null | undefined): { name: string } | null {
   let authorized = false;
@@ -71,8 +77,7 @@ router.beforeEach(async (to) => {
     authStore.setAuth(auth);
   }
   catch (error) {
-    console.error("Error while checking authorization", error);
-    window.location.reload();
+    authError.value = error;
   }
 });
 
@@ -87,9 +92,19 @@ watchEffect(() => {
 
 <template>
   <TooltipProvider :delay-duration="1000">
-    <component :is="layout" v-if="authStore.hasData()">
-      <RouterView/>
-    </component>
+    <template v-if="authError === null">
+      <component :is="layout" v-if="authStore.hasData()">
+        <RouterView/>
+      </component>
+    </template>
+    <Empty
+      v-else
+      :caption="`Error: ${getErrorMessage(authError)}`"
+      :icon="ThumbsUp"
+      action-caption="reload"
+      action-url="/"
+      class="pt-24"
+    />
   </TooltipProvider>
 
   <Toaster rich-colors/>
