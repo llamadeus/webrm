@@ -22,7 +22,7 @@ services:
       APP_MONGODB_URL: mongodb://mongo:mongo@mongo:27017/webrm
       APP_REDIS_URL: redis://valkey:6379
       APP_SESSION_SECRET: ${WEBRM_SESSION_SECRET}
-      APP_ALLOW_ORIGIN: http://localhost:5173,${WEBRM_FRONTEND_URL}
+      APP_ALLOW_ORIGIN: http://localhost,${WEBRM_FRONTEND_URL}
 
   frontend:
     depends_on:
