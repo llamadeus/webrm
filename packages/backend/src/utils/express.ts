@@ -6,12 +6,18 @@ export function json(res: Response, status: number, data: Json) {
   res.status(status).json(data);
 }
 
-export async function destroySession(req: Request) {
+export async function destroySession(req: Request, res: Response) {
   return new Promise<void>((resolve, reject) => {
-    req.session.destroy((err) => {
+    const { session } = req;
+
+    session.destroy((err) => {
       if (err) {
         return reject(err);
       }
+
+      req.session = session;
+      req.session.auth = undefined;
+      res.clearCookie("connect.sid");
 
       resolve();
     });

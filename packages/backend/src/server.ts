@@ -89,7 +89,7 @@ async function validateUserMiddleware(req: Request, res: Response, next: NextFun
     case AuthType.Waiter:
       req.user = await User.findById(req.session.auth.id);
       if (req.user === null) {
-        await destroySession(req);
+        await destroySession(req, res);
 
         return json(res, 401, { error: "Invalid session" });
       }
@@ -100,7 +100,7 @@ async function validateUserMiddleware(req: Request, res: Response, next: NextFun
     case AuthType.TableTerminal:
       req.terminal = await Terminal.findById(req.session.auth.id);
       if (req.terminal === null) {
-        await destroySession(req);
+        await destroySession(req, res);
 
         return json(res, 401, { error: "Invalid session" });
       }
@@ -111,6 +111,8 @@ async function validateUserMiddleware(req: Request, res: Response, next: NextFun
       break;
 
     default:
+      await destroySession(req, res);
+
       return json(res, 401, { error: "Invalid session" });
     }
   }

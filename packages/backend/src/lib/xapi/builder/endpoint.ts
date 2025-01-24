@@ -67,7 +67,7 @@ export function endpoint<
             update: (auth) => {
               req.session.auth = auth;
             },
-            destroy: () => destroySession(req),
+            destroy: () => destroySession(req, res),
           },
         });
 

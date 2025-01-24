@@ -4,6 +4,6 @@ import type { Auth } from "webrm-shared";
 
 declare module "express-session" {
   interface SessionData {
-    auth?: Auth;
+    auth?: Auth | undefined;
   }
 }
