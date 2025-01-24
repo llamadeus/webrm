@@ -89,9 +89,7 @@ async function validateUserMiddleware(req: Request, res: Response, next: NextFun
     case AuthType.Waiter:
       req.user = await User.findById(req.session.auth.id);
       if (req.user === null) {
-        await destroySession(req, res);
-
-        return json(res, 401, { error: "Invalid session" });
+        await destroySession(req, res, "restore");
       }
 
       break;
@@ -100,9 +98,7 @@ async function validateUserMiddleware(req: Request, res: Response, next: NextFun
     case AuthType.TableTerminal:
       req.terminal = await Terminal.findById(req.session.auth.id);
       if (req.terminal === null) {
-        await destroySession(req, res);
-
-        return json(res, 401, { error: "Invalid session" });
+        await destroySession(req, res, "restore");
       }
 
       // TODO: Check if the area is still enabled
